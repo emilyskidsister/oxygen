@@ -1,4 +1,4 @@
-use std::path::Path;
+use std::{ffi::OsStr, path::Path};
 
 use chrono::prelude::*;
 use napi::{
@@ -413,5 +413,35 @@ impl UiState {
             .call((), ThreadsafeFunctionCallMode::NonBlocking);
 
         Ok(())
+    }
+
+    #[napi]
+    pub fn export(&mut self, id: u32) -> Result<String> {
+        if let Some(clip) = self
+            .db
+            .load_by_id(id as usize)
+            .map_err(|err| Error::from_reason(format!("{:?}", err)))?
+        {
+            let temp_dir = std::env::temp_dir();
+            let safe_name = Path::new(&clip.name)
+                .file_name()
+                .unwrap_or_else(|| OsStr::new("invalid"))
+                .to_str()
+                .ok_or_else(|| Error::from_reason("Path is not valid utf8"))?
+                .to_string();
+            let filename = format!("{}_{}.wav", clip.id.unwrap_or(0), safe_name);
+            let tmp_path = temp_dir.join(Path::new(&filename));
+            let tmp_path = tmp_path
+                .to_str()
+                .ok_or_else(|| Error::from_reason("Path is not utf8"))?
+                .to_string();
+
+            clip.export(&tmp_path)
+                .map_err(|err| Error::from_reason(format!("{}", err)))?;
+
+            Ok(tmp_path)
+        } else {
+            return Err(Error::from_reason(format!("No clip with ID {}", id)));
+        }
     }
 }

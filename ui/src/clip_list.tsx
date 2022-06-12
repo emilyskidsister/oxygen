@@ -10,12 +10,14 @@ export default function ClipList({
   currentClipId,
   onSetCurrentTabRecord,
   onSetCurrentClipId,
+  onExport,
 }: {
   clips: Array<JsClipMeta>;
   recordTabSelected: boolean;
   currentClipId: bigint | null;
   onSetCurrentTabRecord: () => void;
   onSetCurrentClipId: (clipId: number) => void;
+  onExport: (clipId: number) => string;
 }) {
   if (!recordTabSelected && currentClipId == null) {
     throw new Error("Invalid state: a tab must be selected.");
@@ -89,6 +91,16 @@ export default function ClipList({
               onClick={(ev) => {
                 ev.preventDefault();
                 onSetCurrentClipId(Number(clip.id));
+              }}
+              draggable={true}
+              onDragStart={(ev) => {
+                ev.preventDefault();
+                const tmpExport = onExport(Number(clip.id));
+                window.startDragOut(tmpExport);
+              }}
+              onDragEnd={(ev) => {
+                ev.preventDefault();
+                console.log("end");
               }}
             >
               <h2

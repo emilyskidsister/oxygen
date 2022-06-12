@@ -8,7 +8,7 @@
 /* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
 const createWindow = () => {
@@ -29,6 +29,13 @@ const createWindow = () => {
     win.webContents.openDevTools({ mode: "bottom" });
   }
 };
+
+ipcMain.on("ondragstart", (event, filePath) => {
+  event.sender.startDrag({
+    file: filePath,
+    icon: path.join(__dirname, "drag_and_drop.png"),
+  });
+});
 
 app.on("window-all-closed", () => {
   if (process.platform !== "darwin") app.quit();
