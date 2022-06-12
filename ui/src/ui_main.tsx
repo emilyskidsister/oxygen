@@ -100,6 +100,13 @@ export default function Main({ inMemory }: { inMemory: boolean }) {
     [uiState]
   );
 
+  const handleExport = useCallback(
+    (clipId: number) => {
+      return uiState.export(clipId);
+    },
+    [uiState]
+  );
+
   const [dragOver, setDragOver] = useState<boolean | "invalid">(false);
 
   return (
@@ -149,6 +156,7 @@ export default function Main({ inMemory }: { inMemory: boolean }) {
         currentClipId={uiState.currentClipId}
         onSetCurrentTabRecord={handleSetTabRecord}
         onSetCurrentClipId={handleSetCurrentClipId}
+        onExport={handleExport}
       />
       {uiState.currentClipId != null && (
         <CurrentClip

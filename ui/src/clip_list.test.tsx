@@ -12,6 +12,7 @@ describe("ClipList", () => {
         currentClipId={null}
         onSetCurrentTabRecord={() => {}}
         onSetCurrentClipId={() => {}}
+        onExport={jest.fn()}
       />
     );
     expect(clipList.getByTestId("cliplist-placeholder").textContent).toEqual(
@@ -36,6 +37,7 @@ describe("ClipList", () => {
         currentClipId={null}
         onSetCurrentTabRecord={() => {}}
         onSetCurrentClipId={handleSetCurrentClipId}
+        onExport={jest.fn()}
       />
     );
     expect(clipList.queryByTestId("cliplist-placeholder")).toEqual(null);
@@ -80,6 +82,7 @@ describe("ClipList", () => {
         currentClipId={2n}
         onSetCurrentTabRecord={() => {}}
         onSetCurrentClipId={handleSetCurrentClipId}
+        onExport={jest.fn()}
       />
     );
 
@@ -115,6 +118,7 @@ describe("ClipList", () => {
         currentClipId={2n}
         onSetCurrentTabRecord={handleSetCurrentTabRecord}
         onSetCurrentClipId={() => {}}
+        onExport={jest.fn()}
       />
     );
 
@@ -145,6 +149,7 @@ describe("ClipList", () => {
         currentClipId={3n}
         onSetCurrentTabRecord={handleSetCurrentTabRecord}
         onSetCurrentClipId={handleSetCurrentClipId}
+        onExport={jest.fn()}
       />
     );
 

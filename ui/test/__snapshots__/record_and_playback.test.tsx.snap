@@ -188,7 +188,7 @@ exports[`app [integration] can record and playback a clip: 2 done recording 1`] 
             >
               <h2
                 class=\\"p-4 text-m font-bold overflow-ellipsis overflow-hidden flex flex-row justify-center\\"
-@@ -46,74 +46,128 @@
+@@ -46,74 +46,129 @@
                   />
                 </svg>
                  Record New Clip
@@ -198,6 +198,7 @@ exports[`app [integration] can record and playback a clip: 2 done recording 1`] 
 +             aria-selected=\\"true\\"
 +             class=\\"p-2 hover:bg-purple-100 cursor-pointer text-purple-900 overflow-hidden bg-purple-900 text-white hover:bg-purple-900 cursor-default\\"
 +             data-testid=\\"clip-1\\"
++             draggable=\\"true\\"
 +             role=\\"tab\\"
 +           >
 +             <h2
@@ -210,21 +211,21 @@ exports[`app [integration] can record and playback a clip: 2 done recording 1`] 
 -             class=\\"text-center text-gray-500 italic p-2\\"
 -             data-testid=\\"cliplist-placeholder\\"
 +               class=\\"flex flex-row\\"
-              >
--             Your clips will appear here.
++             >
 +               <div
 +                 class=\\"text-xs font-light\\"
-+               >
+                >
+-             Your clips will appear here.
 +                 Mocked Date at Mocked Date
-+               </div>
-              </div>
+                </div>
++             </div>
 +           </li>
           </ul>
         </div>
         <div
           class=\\"flex flex-col flex-grow\\"
-+       >
-+         <div
+        >
+          <div
 +           class=\\"flex flex-row\\"
 +         >
 +           <input
@@ -244,7 +245,7 @@ exports[`app [integration] can record and playback a clip: 2 done recording 1`] 
 +               stroke-width=\\"2\\"
 +               viewBox=\\"0 0 24 24\\"
 +               xmlns=\\"http://www.w3.org/2000/svg\\"
-              >
++             >
 +               <path
 +                 d=\\"M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16\\"
 +                 stroke-linecap=\\"round\\"
@@ -253,7 +254,7 @@ exports[`app [integration] can record and playback a clip: 2 done recording 1`] 
 +             </svg>
 +           </button>
 +         </div>
-          <div
++         <div
             class=\\"flex-grow relative overflow-hidden\\"
           >
             <canvas
@@ -335,7 +336,7 @@ exports[`app [integration] can record and playback a clip: 3 delta from initial 
 - First value
 + Second value
 
-@@ -46,16 +46,32 @@
+@@ -46,16 +46,33 @@
                   />
                 </svg>
                  Record New Clip
@@ -345,6 +346,7 @@ exports[`app [integration] can record and playback a clip: 3 delta from initial 
 +             aria-selected=\\"false\\"
 +             class=\\"p-2 hover:bg-purple-100 cursor-pointer text-purple-900 overflow-hidden\\"
 +             data-testid=\\"clip-1\\"
++             draggable=\\"true\\"
 +             role=\\"tab\\"
 +           >
 +             <h2
@@ -357,11 +359,11 @@ exports[`app [integration] can record and playback a clip: 3 delta from initial 
 -             class=\\"text-center text-gray-500 italic p-2\\"
 -             data-testid=\\"cliplist-placeholder\\"
 +               class=\\"flex flex-row\\"
-              >
--             Your clips will appear here.
++             >
 +               <div
 +                 class=\\"text-xs font-light\\"
-+               >
+                >
+-             Your clips will appear here.
 +                 Mocked Date at Mocked Date
 +               </div>
               </div>
